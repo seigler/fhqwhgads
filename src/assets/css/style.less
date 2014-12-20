@@ -16,23 +16,23 @@ label, label:before, label:after {
 	right: 0;
 }
 label {
-	top: 0;
 	bottom: 0;
+	min-height: 100%;
 	padding: 1em;
 	font-family: computerfontregular, monospace;
 	color: @consoleColor;
-	font-size: 4vw;
+	font-size: 4vmax;
 	overflow: hidden;
 	word-break: break-all;
 }
 label:before {
 	content: "";
 	z-index: -1;
-	top: -8vw;
-	bottom: -8vw;
+	top: -8vmax;
+	bottom: -8vmax;
 	animation: scroll 10s linear infinite;
-	background: url('/assets/images/scanline.svg');
-	background-size: 115vw 15vw;
+	background: url('/assets/images/scanline.svg') black;
+	background-size: 115vmax 15vmax;
 	background-repeat: repeat-y;
 	background-position: 50% 0%;
 }
@@ -81,9 +81,9 @@ label:before {
 }
 @keyframes scroll {
 	0% {
-		transform: translate3d(0,-7.5vw,0);
+		transform: translate3d(0,-7.5vmax,0);
 	}
 	100% {
-		transform: translate3d(0,7.5vw,0);
+		transform: translate3d(0,7.5vmax,0);
 	}
 }
