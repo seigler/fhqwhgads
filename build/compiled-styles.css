@@ -1,0 +1,128 @@
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  line-height: 1;
+  box-sizing: border-box;
+}
+label,
+label:before,
+label:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+label {
+  top: 0;
+  bottom: 0;
+  padding: 1em;
+  font-family: computerfontregular, monospace;
+  color: #009900;
+  font-size: 4vw;
+  overflow: hidden;
+  word-break: break-all;
+}
+label:before {
+  content: "";
+  z-index: -1;
+  top: -8vw;
+  bottom: -8vw;
+  -webkit-animation: scroll 10s linear infinite;
+          animation: scroll 10s linear infinite;
+  background: url('/assets/images/scanline.svg');
+  background-size: 115vw 15vw;
+  background-repeat: repeat-y;
+  background-position: 50% 0%;
+}
+#commandLine {
+  white-space: pre-wrap;
+}
+#command {
+  position: absolute;
+  margin-top: 1.25em;
+  z-index: -2;
+}
+#cursor {
+  position: absolute;
+  display: inline-block;
+  border-left: 0.1em solid;
+  margin-bottom: -0.2em;
+  height: 1em;
+  -webkit-animation: blink 1s linear infinite;
+          animation: blink 1s linear infinite;
+}
+#selection {
+  color: black;
+  background-color: #009900;
+}
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes scroll {
+  0% {
+    -webkit-transform: translate3d(0, -7.5vw, 0);
+            transform: translate3d(0, -7.5vw, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 7.5vw, 0);
+            transform: translate3d(0, 7.5vw, 0);
+  }
+}
+@keyframes scroll {
+  0% {
+    -webkit-transform: translate3d(0, -7.5vw, 0);
+            transform: translate3d(0, -7.5vw, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 7.5vw, 0);
+            transform: translate3d(0, 7.5vw, 0);
+  }
+}
+@font-face {
+	font-family: 'computerfontregular';
+	src: url('/assets/fonts/computerfont-webfont.eot');
+	src: url('/assets/fonts/computerfont-webfont.eot?#iefix') format('embedded-opentype'),
+		url('/assets/fonts/computerfont-webfont.woff2') format('woff2'),
+		url('/assets/fonts/computerfont-webfont.woff') format('woff'),
+		url('/assets/fonts/computerfont-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
