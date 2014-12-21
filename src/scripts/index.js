@@ -21,17 +21,23 @@
 	}
 	var commandline = document.getElementById("command");
 	commandline.value = "";
-	commandline.focus();
 	commandline.onkeydown = syncTyping;
 	commandline.onkeyup = syncTyping;
 	commandline.onselect = syncTyping;
+	commandline.onfocus = syncTyping;
+	commandline.focus();
+	document.onmousedown = function() {
+		commandline.focus();
+		return false;
+		// a little heavy handed, but works for now
+	};
 
 	function handleForm() {
-		var scrollback = document.getElementById('scrollback');
+		var history = document.getElementById('history');
 		var val = this.command.value;
 		this.command.value = '';
 		document.getElementById("typing").innerHTML = '';
-		scrollback.innerHTML = scrollback.innerHTML + 'a>' + escapeHTML(val) + '<br>Command not found.<br>';
+		history.innerHTML = history.innerHTML + 'a>' + escapeHTML(val) + '<br>Command not found.<br>';
 		return false;
 	}
 	document.forms[0].onsubmit = handleForm;

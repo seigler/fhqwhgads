@@ -11,9 +11,9 @@
 		<form id="processor">
 			<label>
 				<div id="scrollback">
-					i love u<br>-fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf<br><br>
+					<div id="history">i love u<br>-fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf<br><br></div>
+					<div id="commandLine">a&gt;<input id="command" name="command" type="text" value="" /><span id="typing"></span></div>
 				</div>
-				<div id="commandLine">a&gt;<input id="command" name="command" type="text" value="" /><span id="typing"></span></div>
 			</label>
 		</form>
 		<script type="application/javascript"><?php include('application.js'); ?></script>

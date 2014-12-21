@@ -8,37 +8,78 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  line-height: 1;
+  line-height: 1.2;
   box-sizing: border-box;
+  background-color: #254b72;
+  background-image: url('/assets/images/table.svg');
+  background-size: 100% 100%;
 }
-label,
-label:before,
-label:after {
+#processor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 132.6029165vh;
+  height: auto;
+  margin: auto auto 0;
+  font-family: computerfontregular, monospace;
+  color: #009900;
+  font-size: 6vh;
+}
+@media (max-width: 132.6029165vh) {
+  #processor {
+    height: 75.4131226vw;
+    width: 100%;
+    font-size: 4.524787356vw;
+  }
+}
+#processor:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('/assets/images/screen.svg');
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+#processor > label {
+  position: absolute;
+  top: 1em;
+  bottom: 2.25em;
+  left: 1.5em;
+  right: 1.5em;
+  overflow: hidden;
+  word-break: break-all;
+  z-index: 0;
+}
+#processor > label:before,
+#processor > label:after {
   position: absolute;
   left: 0;
   right: 0;
+  content: '';
 }
-label {
-  bottom: 0;
-  min-height: 100%;
-  padding: 1em;
-  font-family: computerfontregular, monospace;
-  color: #009900;
-  font-size: 4vmax;
-  overflow: hidden;
-  word-break: break-all;
-}
-label:before {
-  content: "";
+#processor > label:before {
   z-index: -1;
-  top: -8vmax;
-  bottom: -8vmax;
-  -webkit-animation: scroll 10s linear infinite;
-          animation: scroll 10s linear infinite;
+  top: -3em;
+  bottom: -3em;
+  -webkit-animation: scroll 2s linear infinite;
+          animation: scroll 2s linear infinite;
   background: url('/assets/images/scanline.svg') #000000;
-  background-size: 115vmax 15vmax;
+  background-size: 25em 4em;
   background-repeat: repeat-y;
   background-position: 50% 0%;
+}
+#scrollback {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 100%;
+  padding: 1.2em 1.6em 0.5em;
+  font-size: 0.8em;
 }
 #commandLine {
   white-space: pre-wrap;
@@ -51,11 +92,12 @@ label:before {
 #cursor {
   position: absolute;
   display: inline-block;
-  border-left: 0.1em solid;
+  border-bottom: 0.1em solid;
   margin-bottom: -0.2em;
   height: 1em;
-  -webkit-animation: blink 1s linear infinite;
-          animation: blink 1s linear infinite;
+  width: 0.5em;
+  -webkit-animation: blink 0.5s linear infinite;
+          animation: blink 0.5s linear infinite;
 }
 #selection {
   color: black;
@@ -63,56 +105,56 @@ label:before {
 }
 @-webkit-keyframes blink {
   0% {
-    opacity: 1;
+    border-bottom-width: 0.1em;
   }
-  40% {
-    opacity: 1;
+  49% {
+    border-bottom-width: 0.1em;
   }
   50% {
-    opacity: 0;
+    border-bottom-width: 0.9em;
   }
-  90% {
-    opacity: 0;
+  99% {
+    border-bottom-width: 0.9em;
   }
   100% {
-    opacity: 1;
+    border-bottom-width: 0.1em;
   }
 }
 @keyframes blink {
   0% {
-    opacity: 1;
+    border-bottom-width: 0.1em;
   }
-  40% {
-    opacity: 1;
+  49% {
+    border-bottom-width: 0.1em;
   }
   50% {
-    opacity: 0;
+    border-bottom-width: 0.9em;
   }
-  90% {
-    opacity: 0;
+  99% {
+    border-bottom-width: 0.9em;
   }
   100% {
-    opacity: 1;
+    border-bottom-width: 0.1em;
   }
 }
 @-webkit-keyframes scroll {
   0% {
-    -webkit-transform: translate3d(0, -7.5vmax, 0);
-            transform: translate3d(0, -7.5vmax, 0);
+    -webkit-transform: translate3d(0, 2em, 0);
+            transform: translate3d(0, 2em, 0);
   }
   100% {
-    -webkit-transform: translate3d(0, 7.5vmax, 0);
-            transform: translate3d(0, 7.5vmax, 0);
+    -webkit-transform: translate3d(0, -2em, 0);
+            transform: translate3d(0, -2em, 0);
   }
 }
 @keyframes scroll {
   0% {
-    -webkit-transform: translate3d(0, -7.5vmax, 0);
-            transform: translate3d(0, -7.5vmax, 0);
+    -webkit-transform: translate3d(0, 2em, 0);
+            transform: translate3d(0, 2em, 0);
   }
   100% {
-    -webkit-transform: translate3d(0, 7.5vmax, 0);
-            transform: translate3d(0, 7.5vmax, 0);
+    -webkit-transform: translate3d(0, -2em, 0);
+            transform: translate3d(0, -2em, 0);
   }
 }
 @font-face {
