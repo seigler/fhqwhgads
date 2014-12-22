@@ -13,7 +13,7 @@ html, body {
 	background-image: url('/assets/images/table.svg');
 	background-size: 100% 100%;
 }
-#processor {
+#compy {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -30,8 +30,7 @@ html, body {
 	font-family: computerfontregular, monospace;
 	color: @consoleColor;
 	font-size: 6vh;
-	&:after {
-		content: '';
+	> #case {
 		position: absolute;
 		top: 0;
 		bottom: 0;
@@ -39,9 +38,21 @@ html, body {
 		right: 0;
 		background-image: url('/assets/images/screen.svg');
 		background-size: 100% 100%;
-		pointer-events: none;
+		>.knob {
+			position: absolute;
+			top: 87.3%;
+			left: 8.5%;
+			height: 7%;
+			width: 4.7%;
+			background: url('/assets/images/knob.svg');
+			background-size: 100% 100%;
+			cursor: pointer;
+			&#knobup {
+				left: 13%;
+			}
+		}
 	}
-	> label {
+	> #screen {
 		position: absolute;
 		top: 1em;
 		bottom: 2.25em;
@@ -50,14 +61,10 @@ html, body {
 		overflow: hidden;
 		word-break: break-all;
 		z-index: 0;
-		&:before, &:after {
+		>#scanlines {
 			position: absolute;
 			left: 0;
 			right: 0;
-			content: '';
-		}
-		&:before {
-			z-index: -1;
 			top: -3em;
 			bottom: -3em;
 			animation: scroll 2s linear infinite;
@@ -65,6 +72,7 @@ html, body {
 			background-size: 25em 4em;
 			background-repeat: repeat-y;
 			background-position: 50% 0%;
+			z-index: -1;
 		}
 	}
 }

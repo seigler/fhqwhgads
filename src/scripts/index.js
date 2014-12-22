@@ -19,17 +19,31 @@
 		afterSelection = this.value.slice(this.selectionEnd)
 		document.getElementById("typing").innerHTML = beforeSelection + (this.selectionStart == this.selectionEnd ? "<span id='cursor'></span>" : "") + "<span id='selection'>" + selection + "</span>" + afterSelection;
 	}
+
 	var commandline = document.getElementById("command");
 	commandline.value = "";
+	commandline.oninput = syncTyping;
 	commandline.onkeydown = syncTyping;
 	commandline.onkeyup = syncTyping;
 	commandline.onselect = syncTyping;
 	commandline.onfocus = syncTyping;
 	commandline.focus();
-	document.onmousedown = function() {
+	document.body.onmousedown = function() {
 		commandline.focus();
 		return false;
 		// a little heavy handed, but works for now
+	};
+
+	var brightness = 0.0;
+	function alterBrightness(delta) {
+		brightness = Math.max(0, Math.min(1, brightness + delta));
+		document.getElementById("scanlines").style.backgroundColor = "hsl(120, 100%, " + (16 * brightness) + "%)";
+	}
+	document.getElementById("knobup").onmousedown = function() {
+		alterBrightness(0.0625);
+	};
+	document.getElementById("knobdown").onmousedown = function() {
+		alterBrightness(-0.0625);
 	};
 
 	function handleForm() {
@@ -40,5 +54,6 @@
 		history.innerHTML = history.innerHTML + 'a>' + escapeHTML(val) + '<br>Command not found.<br>';
 		return false;
 	}
+
 	document.forms[0].onsubmit = handleForm;
 }());

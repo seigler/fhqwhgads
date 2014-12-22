@@ -20,14 +20,26 @@
     }
     var commandline = document.getElementById("command");
     commandline.value = "";
+    commandline.oninput = syncTyping;
     commandline.onkeydown = syncTyping;
     commandline.onkeyup = syncTyping;
     commandline.onselect = syncTyping;
     commandline.onfocus = syncTyping;
     commandline.focus();
-    document.onmousedown = function() {
+    document.body.onmousedown = function() {
         commandline.focus();
         return false;
+    };
+    var brightness = 0;
+    function alterBrightness(delta) {
+        brightness = Math.max(0, Math.min(1, brightness + delta));
+        document.getElementById("scanlines").style.backgroundColor = "hsl(120, 100%, " + 16 * brightness + "%)";
+    }
+    document.getElementById("knobup").onmousedown = function() {
+        alterBrightness(.0625);
+    };
+    document.getElementById("knobdown").onmousedown = function() {
+        alterBrightness(-.0625);
     };
     function handleForm() {
         var history = document.getElementById("history");
