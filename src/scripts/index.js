@@ -40,10 +40,10 @@
 		document.getElementById("scanlines").style.backgroundColor = "hsl(120, 100%, " + (16 * brightness) + "%)";
 	}
 	document.getElementById("knobup").onmousedown = function() {
-		alterBrightness(0.0625);
+		alterBrightness(1.0/6);
 	};
 	document.getElementById("knobdown").onmousedown = function() {
-		alterBrightness(-0.0625);
+		alterBrightness(-1.0/6);
 	};
 
 	function handleForm() {
