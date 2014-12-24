@@ -24,17 +24,17 @@
 
 	var alterBrightness = function (delta) {
 		brightness = Math.max(0, Math.min(1, brightness + delta));
-		this.scanlines.style.backgroundColor = "hsl(120, 100%, " + (16 * brightness) + "%)";
+		this.scanlines.style.backgroundColor = "hsla(120, 100%, 32%, " + brightness * 0.6 + ")";
 	};
 
 
 	var setInputEnabled = function (enabled) {
 		console.log(enabled);
 		if (enabled) {
-			commandInput.disabled = false;
+			commandInput.readOnly = false;
 			commandLine.style.display = 'block';
 		} else {
-			commandInput.disabled = true;
+			commandInput.readOnly = true;
 			commandInput.value = '';
 			typing.innerHTML = '';
 			commandLine.style.display = 'none';
@@ -81,6 +81,8 @@
 			alterBrightness(-1.0/6);
 		};
 		document.forms[0].onsubmit = handleForm;
+
+		alterBrightness(-1);
 	};
 
 	document.addEventListener("DOMContentLoaded", init);
