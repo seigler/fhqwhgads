@@ -42,14 +42,14 @@
 	};
 
 	var showResponse = function (response) {
-		commandHistory.innerHTML += response + '<br>';
+		commandHistory.innerHTML += response + '\n';
 		setInputEnabled(true);
 	};
 
 	var handleForm = function () {
 		var val = this.command.value;
 		setInputEnabled(false);
-		commandHistory.innerHTML += 'a&gt;' + escapeHTML(val) + '<br>';
+		commandHistory.innerHTML += 'a&gt;' + escapeHTML(val) + '\n';
 		setTimeout(function() { showResponse('Command not found.'); }, 500);
 		return false;
 	};

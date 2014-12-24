@@ -13,7 +13,11 @@
 		<form><label id="compy">
 			<div id="screen">
 				<div id="scrollback">
-					<div id="history">i love u<br>-fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf<br><br></div>
+<div id="history">
+i love u
+-fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf
+
+</div>
 					<input id="command" name="command" type="text" value="" />
 					<div id="commandLine"><span id="ps1">a&gt;</span><span id="typing"></span></div>
 				</div>
