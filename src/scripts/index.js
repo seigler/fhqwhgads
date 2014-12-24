@@ -1,6 +1,8 @@
-(function(){
-	function escapeHTML(html) {
-		var fn=function(tag) {
+(function () {
+	var brightness = 0, commandLine, commandInput, scanlines, commandHistory, typing;
+
+	var escapeHTML = function (html) {
+		var fn = function (tag) {
 			var charsToReplace = {
 				'&': '&amp;',
 				'<': '&lt;',
@@ -8,52 +10,78 @@
 				'"': '&#34;'
 			};
 			return charsToReplace[tag] || tag;
-		}
+		};
 		return html.replace(/[&<>"]/g, fn);
-	}
+	};
 
-	function syncTyping() {
+	var syncTyping = function () {
 		var beforeSelection, selection, afterSelection;
 		beforeSelection = this.value.slice(0, this.selectionStart);
-		selection = this.value.slice(this.selectionStart, this.selectionEnd)
-		afterSelection = this.value.slice(this.selectionEnd)
-		document.getElementById("typing").innerHTML = beforeSelection + (this.selectionStart == this.selectionEnd ? "<span id='cursor'></span>" : "") + "<span id='selection'>" + selection + "</span>" + afterSelection;
-	}
-
-	var commandline = document.getElementById("command");
-	commandline.value = "";
-	commandline.oninput = syncTyping;
-	commandline.onkeydown = syncTyping;
-	commandline.onkeyup = syncTyping;
-	commandline.onselect = syncTyping;
-	commandline.onfocus = syncTyping;
-	commandline.focus();
-	document.body.onmousedown = function() {
-		commandline.focus();
-		return false;
-		// a little heavy handed, but works for now
+		selection = this.value.slice(this.selectionStart, this.selectionEnd);
+		afterSelection = this.value.slice(this.selectionEnd);
+		typing.innerHTML = beforeSelection + (this.selectionStart === this.selectionEnd ? "<span id='cursor'></span>" : "") + "<span id='selection'>" + selection + "</span>" + afterSelection;
 	};
 
-	var brightness = 0.0;
-	function alterBrightness(delta) {
+	var alterBrightness = function (delta) {
 		brightness = Math.max(0, Math.min(1, brightness + delta));
-		document.getElementById("scanlines").style.backgroundColor = "hsl(120, 100%, " + (16 * brightness) + "%)";
-	}
-	document.getElementById("knobup").onmousedown = function() {
-		alterBrightness(1.0/6);
-	};
-	document.getElementById("knobdown").onmousedown = function() {
-		alterBrightness(-1.0/6);
+		this.scanlines.style.backgroundColor = "hsl(120, 100%, " + (16 * brightness) + "%)";
 	};
 
-	function handleForm() {
-		var history = document.getElementById('history');
+
+	var setInputEnabled = function (enabled) {
+		console.log(enabled);
+		if (enabled) {
+			commandInput.disabled = false;
+			commandLine.style.display = 'block';
+		} else {
+			commandInput.disabled = true;
+			commandInput.value = '';
+			typing.innerHTML = '';
+			commandLine.style.display = 'none';
+		}
+	};
+
+	var showResponse = function (response) {
+		commandHistory.innerHTML += response + '<br>';
+		setInputEnabled(true);
+	};
+
+	var handleForm = function () {
 		var val = this.command.value;
-		this.command.value = '';
-		document.getElementById("typing").innerHTML = '';
-		history.innerHTML = history.innerHTML + 'a>' + escapeHTML(val) + '<br>Command not found.<br>';
+		setInputEnabled(false);
+		commandHistory.innerHTML += 'a&gt;' + escapeHTML(val) + '<br>';
+		setTimeout(function() { showResponse('Command not found.'); }, 500);
 		return false;
-	}
+	};
 
-	document.forms[0].onsubmit = handleForm;
+	var init = function() {
+		console.log('init');
+		commandLine = document.getElementById("commandLine");
+		commandInput = document.getElementById("command");
+		scanlines = document.getElementById("scanlines");
+		commandHistory = document.getElementById("history");
+		typing = document.getElementById("typing");
+
+		commandInput.value = "";
+		commandInput.oninput = syncTyping;
+		commandInput.onkeydown = syncTyping;
+		commandInput.onkeyup = syncTyping;
+		commandInput.onselect = syncTyping;
+		commandInput.onfocus = syncTyping;
+		commandInput.focus();
+		document.body.onmousedown = function() {
+			commandInput.focus();
+			return false;
+			// a little heavy handed, but works for now
+		};
+		document.getElementById("knobup").onmousedown = function() {
+			alterBrightness(1.0/6);
+		};
+		document.getElementById("knobdown").onmousedown = function() {
+			alterBrightness(-1.0/6);
+		};
+		document.forms[0].onsubmit = handleForm;
+	};
+
+	document.addEventListener("DOMContentLoaded", init);
 }());
