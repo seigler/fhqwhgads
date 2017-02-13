@@ -16,7 +16,7 @@ body {
   line-height: 1.2;
   box-sizing: border-box;
   background-color: #254b72;
-  background-image: url('/assets/images/table.svg');
+  background-image: url('assets/images/table.svg');
   background-size: 100% 100%;
 }
 html {
@@ -51,7 +51,7 @@ html {
   bottom: 0;
   left: 0;
   right: 0;
-  background-image: url('/assets/images/screen.svg');
+  background-image: url('assets/images/screen.svg');
   background-size: 100% 100%;
 }
 #compy > #case > .knob {
@@ -60,7 +60,7 @@ html {
   left: 8.5%;
   height: 7%;
   width: 4.7%;
-  background: url('/assets/images/knob.svg');
+  background: url('assets/images/knob.svg');
   background-size: 100% 100%;
   cursor: pointer;
 }
@@ -85,7 +85,7 @@ html {
   bottom: -3em;
   -webkit-animation: scroll 2s linear infinite;
           animation: scroll 2s linear infinite;
-  background: url('/assets/images/scanline.svg') #000000;
+  background: url('assets/images/scanline.svg') #000000;
   background-size: 100% 15%;
   background-repeat: repeat-y;
   background-position: 50% 0%;
@@ -178,11 +178,11 @@ html {
 }
 @font-face {
 	font-family: 'computerfontregular';
-	src: url('/assets/fonts/computerfont-webfont.eot');
-	src: url('/assets/fonts/computerfont-webfont.eot?#iefix') format('embedded-opentype'),
-		url('/assets/fonts/computerfont-webfont.woff2') format('woff2'),
-		url('/assets/fonts/computerfont-webfont.woff') format('woff'),
-		url('/assets/fonts/computerfont-webfont.ttf') format('truetype');
+	src: url('assets/fonts/computerfont-webfont.eot');
+	src: url('assets/fonts/computerfont-webfont.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/computerfont-webfont.woff2') format('woff2'),
+		url('assets/fonts/computerfont-webfont.woff') format('woff'),
+		url('assets/fonts/computerfont-webfont.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }

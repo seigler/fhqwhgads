@@ -3,7 +3,7 @@ FHQWHGADS
 
 This is an homage to Homestar Runner's Strongbad Email #9, http://homestarrunner.com/sbemail9.html
 
-You can see it hosted at http://fhqwhgads.bit/ (if that won't resolve for you, use http://fhqwhgads.bit.pe/)
+You can see it hosted at https://seigler.github.io/fhqwhgads/
 
 ## Setup
 
