@@ -9,5 +9,5 @@ You can see it hosted at http://fhqwhgads.bit/ (if that won't resolve for you, u
 
 The project uses grunt for LESS preprocessing and some other small tasks. In the base directory, run "npm install" to download all the dependencies.
 
-When you are ready to develop or build, run "grunt" in the base directory, and the grunt task runner will build the project, then attempt to host it locally for you on port 1337 using your local installation of PHP.
+When you are ready to develop or build, run "grunt" in the base directory, and the grunt task runner will build the project, then attempt to host it locally for you on port 1337.
 The output will be created in the "build" directory.

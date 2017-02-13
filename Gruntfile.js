@@ -84,10 +84,9 @@ module.exports = function (grunt) {
 			}
 		},
 
-		php: {
-			watch: {
+		connect: {
+			server: {
 				options: {
-					hostname: '0.0.0.0',
 					port: 1337,
 					base: 'build'
 				}
@@ -103,13 +102,13 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-php');
+	grunt.loadNpmTasks('grunt-contrib-connect');
 
 	// Default task(s).
 	grunt.registerTask(
 		'default',
 		'Default is to build everything, then watch for changes',
-		['build', 'php:watch', 'watch']
+		['build', 'connect', 'watch']
 	);
 	grunt.registerTask(
 		'stylesheets',

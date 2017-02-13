@@ -15,6 +15,14 @@ html, body {
 	background-image: url('/assets/images/table.svg');
 	background-size: 100% 100%;
 }
+
+html {
+	font-size: 6vh;
+	@media (max-width: 132.6029165vh) {
+		font-size: 4.524787356vw;
+	}
+}
+
 #compy {
 	position: absolute;
 	top: 0;
@@ -26,12 +34,10 @@ html, body {
 	@media (max-width: 132.6029165vh) {
 		height: 75.4131226vw;
 		width: 100%;
-		font-size: 4.524787356vw;
 	}
 	margin: auto auto 0;
 	font-family: computerfontregular, monospace;
 	color: @consoleColor;
-	font-size: 6vh;
 	> #case {
 		position: absolute;
 		top: 0;
@@ -67,11 +73,11 @@ html, body {
 			position: absolute;
 			left: 0;
 			right: 0;
-			top: -3em;
+			top: 0;
 			bottom: -3em;
 			animation: scroll 2s linear infinite;
 			background: url('/assets/images/scanline.svg') black;
-			background-size: 25em 4em;
+			background-size: 100% 15%;
 			background-repeat: repeat-y;
 			background-position: 50% 0%;
 			transition: background-color 2s;
@@ -126,9 +132,9 @@ html, body {
 }
 @keyframes scroll {
 	0% {
-		transform: translate3d(0,2em,0);
+		transform: translate3d(0,0,0);
 	}
 	100% {
-		transform: translate3d(0,-2em,0);
+		transform: translate3d(0,-15%,0);
 	}
 }
